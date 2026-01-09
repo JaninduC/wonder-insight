@@ -1,4 +1,4 @@
-package com.wonder.insight;
+package io.github.janinduc;
 
 import org.slf4j.MDC;
 import org.springframework.web.servlet.HandlerInterceptor;

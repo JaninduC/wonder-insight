@@ -1,4 +1,4 @@
-package com.wonder.insight.annotation;
+package io.github.janinduc.annotation;
 
 
 import java.lang.annotation.ElementType;

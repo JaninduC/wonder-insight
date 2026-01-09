@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.wonder.insight.config.LogHubAutoConfiguration
+io.github.janinduc.config.LogHubAutoConfiguration

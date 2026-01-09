@@ -1,13 +1,13 @@
-package com.wonder.insight;
+package io.github.janinduc;
 
 
 import com.sun.management.OperatingSystemMXBean;
-import com.wonder.insight.config.ErrorTypeEnum;
-import com.wonder.insight.config.LoghubProperties;
-import com.wonder.insight.model.DeveloperDetailsVO;
-import com.wonder.insight.model.ErrorReportVO;
-import com.wonder.insight.model.ServerDetailsVO;
-import com.wonder.insight.util.ExceptionUtil;
+import io.github.janinduc.config.ErrorTypeEnum;
+import io.github.janinduc.config.LoghubProperties;
+import io.github.janinduc.model.DeveloperDetailsVO;
+import io.github.janinduc.model.ErrorReportVO;
+import io.github.janinduc.model.ServerDetailsVO;
+import io.github.janinduc.util.ExceptionUtil;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;

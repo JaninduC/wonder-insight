@@ -1,4 +1,4 @@
-package com.wonder.insight.controller;
+package io.github.janinduc.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

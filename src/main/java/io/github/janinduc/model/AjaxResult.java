@@ -1,7 +1,7 @@
-package com.wonder.insight.model;
+package io.github.janinduc.model;
 
 
-import com.wonder.insight.constans.HttpStatus;
+import io.github.janinduc.constans.HttpStatus;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -27,6 +27,7 @@ public class AjaxResult<T> implements Serializable {
     //    @Serial
     private static final long serialVersionUID = 1L;
     private int code;
+    private int status;
 
     private String msg;
 
@@ -67,6 +68,9 @@ public class AjaxResult<T> implements Serializable {
     public static <T> AjaxResult<T> fail(int code, String msg) {
         return restResult(null, code, msg);
     }
+    public static <T> AjaxResult<T> fail(int code, String msg, T data) {
+        return restResult(data, code, msg);
+    }
 
     /**
      * 返回警告消息
@@ -94,6 +98,7 @@ public class AjaxResult<T> implements Serializable {
         r.setCode(code);
         r.setData(data);
         r.setMsg(msg);
+        r.setStatus(code);
         return r;
     }
 

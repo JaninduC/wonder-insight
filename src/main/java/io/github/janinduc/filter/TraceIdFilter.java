@@ -1,4 +1,4 @@
-package com.wonder.insight.filter;
+package io.github.janinduc.filter;
 
 import org.springframework.web.filter.OncePerRequestFilter;
 

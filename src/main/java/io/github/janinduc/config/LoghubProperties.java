@@ -1,4 +1,4 @@
-package com.wonder.insight.config;
+package io.github.janinduc.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

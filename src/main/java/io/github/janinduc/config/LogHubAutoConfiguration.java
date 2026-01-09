@@ -1,7 +1,7 @@
-package com.wonder.insight.config;
+package io.github.janinduc.config;
 
-import com.wonder.insight.LoghubClient;
-import com.wonder.insight.filter.TraceIdFilter;
+import io.github.janinduc.LoghubClient;
+import io.github.janinduc.filter.TraceIdFilter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 //@EnableAspectJAutoProxy
-@ComponentScan("com.wonder.insight")
+@ComponentScan("io.github.janinduc")
 @EnableConfigurationProperties(LoghubProperties.class)
 public class LogHubAutoConfiguration {
     private final boolean enabled;
