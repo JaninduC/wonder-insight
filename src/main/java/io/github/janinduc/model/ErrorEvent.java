@@ -1,4 +1,4 @@
-package com.wonder.insight.model;
+package io.github.janinduc.model;
 
 import lombok.Data;
 

@@ -1,11 +1,33 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.JaninduC</groupId>
+    <groupId>io.github.janinduc</groupId>
     <artifactId>wonder-insight</artifactId>
     <version>1.17.2</version>
     <packaging>jar</packaging>
+    <name>Wonder Insight</name>
+    <description>A Spring Boot library for insight and monitoring</description>
+    <url>https://github.com/JaninduC/wonder-insight</url>
 
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>JaninduC</name>
+            <url>https://github.com/JaninduC</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/JaninduC/wonder-insight.git</connection>
+        <developerConnection>scm:git:ssh://github.com:JaninduC/wonder-insight.git</developerConnection>
+        <url>https://github.com/JaninduC/wonder-insight</url>
+    </scm>
     <properties>
         <java.version>17</java.version>
         <spring.boot.version>3.4.4</spring.boot.version>
@@ -56,10 +78,10 @@
         </dependency>
     </dependencies>
 
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <url>https://maven.pkg.github.com/JaninduC/wonder-insight</url>
-        </repository>
-    </distributionManagement>
+<!--    <distributionManagement>-->
+<!--        <repository>-->
+<!--            <id>github</id>-->
+<!--            <url>https://maven.pkg.github.com/JaninduC/wonder-insight</url>-->
+<!--        </repository>-->
+<!--    </distributionManagement>-->
 </project>

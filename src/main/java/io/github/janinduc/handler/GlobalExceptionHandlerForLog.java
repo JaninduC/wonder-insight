@@ -1,9 +1,9 @@
-package com.wonder.insight.handler;
+package io.github.janinduc.handler;
 
-import com.wonder.insight.LoghubClient;
-import com.wonder.insight.config.ErrorTypeEnum;
-import com.wonder.insight.exception.TrackErrorBypassException;
-import com.wonder.insight.model.AjaxResult;
+import io.github.janinduc.LoghubClient;
+import io.github.janinduc.config.ErrorTypeEnum;
+import io.github.janinduc.exception.TrackErrorBypassException;
+import io.github.janinduc.model.AjaxResult;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -13,16 +13,16 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.wonder.insight.filter.TraceIdFilter.TRACE_ID;
+import static io.github.janinduc.filter.TraceIdFilter.TRACE_ID;
 
 @RestControllerAdvice
 public class GlobalExceptionHandlerForLog {
 
     @ExceptionHandler(Exception.class)
     public AjaxResult<?> handleException(Exception ex, HttpServletRequest req, HandlerMethod handlerMethod) throws Throwable {
-
         // Skip global handler if @TrackError handled the error
         if (!(ex instanceof TrackErrorBypassException)) {
+            ex.printStackTrace();
             Map<String, Object> map = new HashMap<>();
             map.put("error_id", req.getAttribute(TRACE_ID));
             // Method details

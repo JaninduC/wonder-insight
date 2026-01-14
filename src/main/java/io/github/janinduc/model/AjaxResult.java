@@ -1,7 +1,7 @@
-package com.wonder.insight.model;
+package io.github.janinduc.model;
 
 
-import com.wonder.insight.constans.HttpStatus;
+import io.github.janinduc.constans.HttpStatus;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

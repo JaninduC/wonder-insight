@@ -1,9 +1,9 @@
-package com.wonder.insight.annotation;
+package io.github.janinduc.annotation;
 
 
-import com.wonder.insight.LoghubClient;
-import com.wonder.insight.config.ErrorTypeEnum;
-import com.wonder.insight.exception.TrackErrorBypassException;
+import io.github.janinduc.LoghubClient;
+import io.github.janinduc.config.ErrorTypeEnum;
+import io.github.janinduc.exception.TrackErrorBypassException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -17,14 +17,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import static com.wonder.insight.util.ExceptionUtil.buildParamMap;
+import static io.github.janinduc.util.ExceptionUtil.buildParamMap;
 
 @Aspect
 @Component
 public class JobErrorTrackAspect {
     private static final Logger log = LoggerFactory.getLogger(JobErrorTrackAspect.class);
 
-    @Around("@annotation(JobErrorTrack)")
+    @Around("@annotation(io.github.janinduc.annotation.JobErrorTrack)")
     public Object track(ProceedingJoinPoint pjp, JobErrorTrack trackError) throws Throwable {
         MethodSignature signature = (MethodSignature) pjp.getSignature();
         Method method = signature.getMethod();

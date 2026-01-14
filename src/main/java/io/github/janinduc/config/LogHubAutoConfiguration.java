@@ -1,8 +1,8 @@
-package com.wonder.insight.config;
+package io.github.janinduc.config;
 
-import com.wonder.insight.LoghubClient;
-import com.wonder.insight.filter.TraceIdFilter;
-import com.wonder.insight.handler.GlobalExceptionHandlerForLog;
+import io.github.janinduc.LoghubClient;
+import io.github.janinduc.filter.TraceIdFilter;
+import io.github.janinduc.handler.GlobalExceptionHandlerForLog;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

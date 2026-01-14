@@ -1,4 +1,4 @@
-package com.wonder.insight.constans;
+package io.github.janinduc.constans;
 
 
 /**

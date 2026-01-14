@@ -1,4 +1,4 @@
-package com.wonder.insight;
+package io.github.janinduc;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

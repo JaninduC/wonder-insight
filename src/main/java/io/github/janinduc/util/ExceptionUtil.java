@@ -1,4 +1,4 @@
-package com.wonder.insight.util;
+package io.github.janinduc.util;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
