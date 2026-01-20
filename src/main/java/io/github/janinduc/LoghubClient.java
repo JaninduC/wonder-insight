@@ -64,6 +64,7 @@ public class LoghubClient {
 
             }
         } catch (Exception e) {
+            // if sending part error
            log.error("Send error", e);
         }
     }
