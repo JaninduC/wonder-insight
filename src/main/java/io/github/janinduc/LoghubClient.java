@@ -8,6 +8,7 @@ import io.github.janinduc.model.DeveloperDetailsVO;
 import io.github.janinduc.model.ErrorReportVO;
 import io.github.janinduc.model.ServerDetailsVO;
 import io.github.janinduc.util.ExceptionUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -19,6 +20,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
 
+@Slf4j
 @Component
 public class LoghubClient {
 
@@ -62,7 +64,7 @@ public class LoghubClient {
 
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+           log.error("Send error", e);
         }
     }
 

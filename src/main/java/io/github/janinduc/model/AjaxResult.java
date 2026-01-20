@@ -62,14 +62,14 @@ public class AjaxResult<T> implements Serializable {
     }
 
     public static <T> AjaxResult<T> fail(String msg, T data) {
-        return restResult(null, FAIL, msg);
+        return restResult(data, FAIL, msg);
     }
 
     public static <T> AjaxResult<T> fail(int code, String msg) {
         return restResult(null, code, msg);
     }
     public static <T> AjaxResult<T> fail(int code, String msg, T data) {
-        return restResult(null, code, msg);
+        return restResult(data, code, msg);
     }
 
     /**
