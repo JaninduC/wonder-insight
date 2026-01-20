@@ -64,9 +64,12 @@ public class GlobalExceptionHandlerForLog {
                 return AjaxResult.fail(400, Objects.requireNonNull(ex.getMessage()),returnData);
             }
 
-            return AjaxResult.fail("system.error ", map);
+            if (ex.getMessage()!=null) {
+                return AjaxResult.fail(ex.getMessage(), returnData);
+            }
+            return AjaxResult.fail("system.error", returnData);
         }
-        return AjaxResult.fail("system.error ");
+        return AjaxResult.fail("system.error");
     }
 
 

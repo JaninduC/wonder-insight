@@ -28,7 +28,7 @@ public class AjaxResult<T> implements Serializable {
     private static final long serialVersionUID = 1L;
     private int code;
     private int status;
-
+    private String msgId;
     private String msg;
 
     private T data;
@@ -62,14 +62,14 @@ public class AjaxResult<T> implements Serializable {
     }
 
     public static <T> AjaxResult<T> fail(String msg, T data) {
-        return restResult(data, FAIL, msg);
+        return restResult(null, FAIL, msg);
     }
 
     public static <T> AjaxResult<T> fail(int code, String msg) {
         return restResult(null, code, msg);
     }
     public static <T> AjaxResult<T> fail(int code, String msg, T data) {
-        return restResult(data, code, msg);
+        return restResult(null, code, msg);
     }
 
     /**
@@ -99,6 +99,7 @@ public class AjaxResult<T> implements Serializable {
         r.setData(data);
         r.setMsg(msg);
         r.setStatus(code);
+        r.setMsgId(msg);
         return r;
     }
 

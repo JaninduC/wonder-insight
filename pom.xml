@@ -5,7 +5,7 @@
 
     <groupId>io.github.janinduc</groupId>
     <artifactId>wonder-insight</artifactId>
-    <version>1.8.5</version>
+    <version>1.8.6</version>
     <packaging>jar</packaging>
 
     <name>Wonder Insight</name>
