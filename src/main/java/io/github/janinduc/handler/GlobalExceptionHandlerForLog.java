@@ -65,6 +65,10 @@ public class GlobalExceptionHandlerForLog {
             }
 
             if (ex.getMessage()!=null) {
+                String value = ex.getMessage();
+                if (value != null && value.codePointCount(0, value.length()) > 99) {
+                    return AjaxResult.fail(500, "system.error", returnData);
+                }
                 return AjaxResult.fail(ex.getMessage(), returnData);
             }
             return AjaxResult.fail("system.error", returnData);
