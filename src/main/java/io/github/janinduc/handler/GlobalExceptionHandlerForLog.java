@@ -12,6 +12,8 @@ import org.springframework.web.method.HandlerMethod;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 
 import static io.github.janinduc.filter.TraceIdFilter.TRACE_ID;
 
@@ -22,9 +24,11 @@ public class GlobalExceptionHandlerForLog {
     public AjaxResult<?> handleException(Exception ex, HttpServletRequest req, HandlerMethod handlerMethod) throws Throwable {
         // Skip global handler if @TrackError handled the error
         if (!(ex instanceof TrackErrorBypassException)) {
+            System.out.println("TraceId: " + req.getAttribute(TRACE_ID));
             ex.printStackTrace();
             Map<String, Object> map = new HashMap<>();
             map.put("error_id", req.getAttribute(TRACE_ID));
+
             // Method details
             Method method = handlerMethod.getMethod();
             String methodName = method.getName();
@@ -37,11 +41,28 @@ public class GlobalExceptionHandlerForLog {
             map.put("method_name", methodName);
             map.put("simple_class_name", simpleClassName);
 
-            LoghubClient.sendError(ex, TRACE_ID, req, map, ErrorTypeEnum.REGULAR_ERROR); // notify main LogHub
+            CompletableFuture.runAsync(() -> {
+                try {
+                    LoghubClient.sendError(ex, TRACE_ID, req, map,ErrorTypeEnum.REGULAR_ERROR);// notify main LogHub
+                } catch (Exception e) {
+                    e.printStackTrace(); // avoid killing async thread silently
+                }
+            });
             map.remove("module_name");
             map.remove("class_name");
             map.remove("simple_class_name");
             map.remove("method_name");
+            if (ex.getClass().getSimpleName().equals("NotLoginException")) {
+                //logger.error(e.getMessage());
+                return AjaxResult.fail(401, Objects.requireNonNull(ex.getMessage()),map);
+            }
+            if (ex.getMessage() != null) {
+                String value = ex.getMessage();
+                if (value != null && value.codePointCount(0, value.length()) > 99) {
+                    return AjaxResult.fail( "system.error", map);
+                }
+                return AjaxResult.fail(ex.getMessage(), map);
+            }
             return AjaxResult.fail("system.error ", map);
 
         }

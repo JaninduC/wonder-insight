@@ -18,7 +18,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Component
 public class LoghubClient {
 
@@ -62,7 +66,8 @@ public class LoghubClient {
 
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            // if sending part error
+           log.error("Send error", e);
         }
     }
 
@@ -81,7 +86,7 @@ public class LoghubClient {
         ErrorReportVO payload = new ErrorReportVO();
         payload.setDeveloperDetails(dev);
         payload.setServerDetailsSnap(Arrays.asList(getSystemDetails()));
-        payload.setTitle(ex.getMessage());
+        payload.setTitle(extractExceptionName(ex.getMessage()));
         payload.setTraceId(traceId);
         payload.setException(ExceptionUtil.getStackTrace(ex));
 
@@ -114,5 +119,22 @@ public class LoghubClient {
         } catch (Exception e) {
             return "unknown";
         }
+    }
+
+    // Matches ANY fully-qualified Exception or Error
+    private static final Pattern EXCEPTION_PATTERN =
+            Pattern.compile("(?:Cause:\\s*)?([a-zA-Z_$][a-zA-Z0-9_$]*(?:\\.[a-zA-Z_$][a-zA-Z0-9_$]*)+(Exception|Error))");
+
+    public static String extractExceptionName(String text) {
+        if (text == null || text.isEmpty()) {
+            return null;
+        }
+
+        Matcher matcher = EXCEPTION_PATTERN.matcher(text);
+        if (matcher.find()) {
+            return matcher.group(1);
+        }
+
+        return null;
     }
 }

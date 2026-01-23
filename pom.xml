@@ -3,7 +3,7 @@
 
     <groupId>io.github.janinduc</groupId>
     <artifactId>wonder-insight</artifactId>
-    <version>1.17.2</version>
+    <version>1.17.4</version>
     <packaging>jar</packaging>
     <name>Wonder Insight</name>
     <description>A Spring Boot library for insight and monitoring</description>

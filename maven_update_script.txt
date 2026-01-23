@@ -1,0 +1,35 @@
+Wonder-insight 1.17.4 deployment
+===============================
+
+
+md5 wonder-insight-1.17.4.jar | awk '{print $4}' > wonder-insight-1.17.4.jar.md5
+shasum -a 1 wonder-insight-1.17.4.jar | awk '{print $1}' > wonder-insight-1.17.4.jar.sha1
+
+
+md5 wonder-insight-1.17.4.pom | awk '{print $4}' > wonder-insight-1.17.4.pom.md5
+shasum -a 1 wonder-insight-1.17.4.pom | awk '{print $1}' > wonder-insight-1.17.4.pom.sha1
+
+
+md5 wonder-insight-1.17.4-sources.jar | awk '{print $4}' > wonder-insight-1.17.4-sources.jar.md5
+shasum -a 1 wonder-insight-1.17.4-sources.jar | awk '{print $1}' > wonder-insight-1.17.4-sources.jar.sha1
+
+
+md5 wonder-insight-1.17.4-javadoc.jar | awk '{print $4}' > wonder-insight-1.17.4-javadoc.jar.md5
+shasum -a 1 wonder-insight-1.17.4-javadoc.jar | awk '{print $1}' > wonder-insight-1.17.4-javadoc.jar.sha1
+
+
+gpg --armor --detach-sign wonder-insight-1.17.4.jar
+gpg --armor --detach-sign wonder-insight-1.17.4.pom
+gpg --armor --detach-sign wonder-insight-1.17.4-sources.jar
+gpg --armor --detach-sign wonder-insight-1.17.4-javadoc.jar
+
+
+for f in *.jar *.pom; do
+  md5 "$f" | awk '{print $4}' > "$f.md5"
+  shasum -a 1 "$f" | awk '{print $1}' > "$f.sha1"
+done
+
+zip -r wonder-insight-1.17.4-bundle.zip io
+
+
+file location : 1.17.4/io/github/janinduc/wonder-insight/1.17.4

@@ -68,6 +68,9 @@ public class AjaxResult<T> implements Serializable {
     public static <T> AjaxResult<T> fail(int code, String msg) {
         return restResult(null, code, msg);
     }
+    public static <T> AjaxResult<T> fail(int code, String msg, T data) {
+        return restResult(data, code, msg);
+    }
 
     /**
      * 返回警告消息
