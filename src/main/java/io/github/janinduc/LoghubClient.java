@@ -86,7 +86,7 @@ public class LoghubClient {
         ErrorReportVO payload = new ErrorReportVO();
         payload.setDeveloperDetails(dev);
         payload.setServerDetailsSnap(Arrays.asList(getSystemDetails()));
-        payload.setTitle(extractExceptionName(ex.getMessage()));
+        payload.setTitle(ex.getClass().toString());
         payload.setTraceId(traceId);
         payload.setException(ExceptionUtil.getStackTrace(ex));
 

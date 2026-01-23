@@ -15,6 +15,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 
 import static io.github.janinduc.filter.TraceIdFilter.TRACE_ID;
 
@@ -44,7 +45,14 @@ public class GlobalExceptionHandlerForLog {
             map.put("method_name", methodName);
             map.put("simple_class_name", simpleClassName);
             Map<String,String> returnData=new HashMap<>();
-            LoghubClient.sendError(ex, TRACE_ID, req, map, ErrorTypeEnum.REGULAR_ERROR); // notify main LogHub
+            Map<String,Object> requestData=new HashMap<>(map);
+            CompletableFuture.runAsync(() -> {
+                try {
+                    LoghubClient.sendError(ex, TRACE_ID, req, requestData, ErrorTypeEnum.REGULAR_ERROR); // notify main LogHub
+                } catch (Exception e) {
+                    e.printStackTrace(); // avoid killing async thread silently
+                }
+            });
             map.remove("module_name");
             map.remove("class_name");
             map.remove("simple_class_name");
