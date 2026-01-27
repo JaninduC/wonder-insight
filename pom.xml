@@ -3,7 +3,7 @@
 
     <groupId>io.github.janinduc</groupId>
     <artifactId>wonder-insight</artifactId>
-    <version>1.17.4</version>
+    <version>1.17.7</version>
     <packaging>jar</packaging>
     <name>Wonder Insight</name>
     <description>A Spring Boot library for insight and monitoring</description>
@@ -77,8 +77,20 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
-<!--    <distributionManagement>-->
+    <!--    <distributionManagement>-->
 <!--        <repository>-->
 <!--            <id>github</id>-->
 <!--            <url>https://maven.pkg.github.com/JaninduC/wonder-insight</url>-->
